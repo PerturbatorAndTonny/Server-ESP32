@@ -5,3 +5,4 @@ drizzle/*.sql
 pnpm-lock.yaml
 pnpm-workspace.yaml
 local.db
+file

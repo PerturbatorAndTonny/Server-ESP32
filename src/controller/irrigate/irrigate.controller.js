@@ -11,7 +11,7 @@ export const createRecord = async (req, res) => {
             Relative_Celsius: String(celsius),
             Relative_Fahrenheit: String(fahrenheit)
         }).returning()
-        return res.status().json({
+        return res.status(200).json({
             message: "new irraget recorded",
             data: newRecord
         })

@@ -1,6 +1,6 @@
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
-export const wateredTable = sqliteTable("irrigate", {
+export const wateredTable = sqliteTable("wateredTable", {
     Id_Irrigate_Cout: int().primaryKey({ 
         autoIncrement: true,
         onConflict: 'abort'
