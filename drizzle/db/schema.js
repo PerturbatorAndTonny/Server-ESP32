@@ -7,5 +7,6 @@ export const wateredTable = sqliteTable("wateredTable", {
     }).notNull(),
     Relative_Humidity: text().notNull(),
     Relative_Celsius: text().notNull(),
-    Relative_Fahrenheit: text().notNull()
+    Relative_Fahrenheit: text().notNull(),
+    DateIrrigate: text().notNull()
 })
