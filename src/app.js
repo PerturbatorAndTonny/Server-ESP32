@@ -1,7 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 import irrigateRouter from './router/irrigate/irrigate.route.js'
-
+import { cronometer } from './functions/new_file_crmtr.js'
 const app = express()
 
 app.use(express.json())
@@ -14,5 +14,5 @@ app.use((req, res, next) => {
         message: "Servidor en etapa de desarrollo, ruta no encontrada"
     })
 })
-
+cronometer()
 export default app

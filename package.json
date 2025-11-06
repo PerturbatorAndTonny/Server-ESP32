@@ -16,7 +16,9 @@
     "better-sqlite3": "^12.4.1",
     "drizzle-orm": "^0.44.6",
     "express": "^5.1.0",
-    "morgan": "^1.10.1"
+    "morgan": "^1.10.1",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^7.0.10"
   },
   "devDependencies": {
     "drizzle-kit": "^0.31.5"
