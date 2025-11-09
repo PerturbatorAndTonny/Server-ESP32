@@ -1,7 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 import irrigateRouter from './router/irrigate/irrigate.route.js'
-import { cronometer } from './functions/new_file_crmtr.js'
+import { cronometer } from './functions/cron.js'
 const app = express()
 
 app.use(express.json())

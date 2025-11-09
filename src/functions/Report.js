@@ -1,21 +1,21 @@
 import nodemailer from 'nodemailer'
 const transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
+    host: "smtp.gmail.com",
     port: 465,
     secure: true,
+    service: 'gmail',
     auth: {
-        user: '',
-        pass: ''
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
     }
 })
 
-async function sendReport() {
+export async function sendReport() {
     await transporter.sendMail({
-        from: '"Santiago" <> ',
-        to: "santiagohortua10@gmail.com",
-        subject: "Reporte de regado semanal ",
-        html: "<b> Hello World?</b>"
-
+        from: process.env.MAIL_USER,
+        to: process.env.MAIL_RECEPT,
+        subject: 'Prueba desde Nodemailer',
+        text: '¡Hola! Este es un correo de prueba.'
     })
 
 
