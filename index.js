@@ -1,15 +1,14 @@
-import app from "./src/app.js"
+import app from "./src/app.js";
 
-
-const port = process.env.PORT
+const port = process.env.PORT;
 
 async function main() {
   try {
-    app.listen(port)
-    console.log("Server is running on port:", port)
+    app.listen(port);
+    console.log("Server is running on port:", port);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
-main()
+main();
