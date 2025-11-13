@@ -17,17 +17,22 @@ const transporter = nodemailer.createTransport({
 });
 
 export async function sendReport() {
+  // Resuelve las promesas de los valores
+  const A = await avgRecord("Relative_Humidity");
+  const B = await avgRecord("Relative_Celsius");
+  const C = await avgRecord("Relative_Fahrenheit");
 
-  const A = avgRecord("Relative_Humidity");
-  const B = avgRecord("Relative_Celsius");
-  const C = avgRecord("Relative_Fahrenheit");
+  console.log('Promedio de Humedad del Aire:', A);
+  console.log('Promedio de Temperatura Celsius:', B); 
+  console.log('Promedio de Temperatura Fahrenheit:', C);  
+
   const sheet = hmtlReport(A, B, C);
-
+  console.log(sheet)
 
   await transporter.sendMail({
     from: process.env.MAIL_USER,
     to: process.env.MAIL_RECEPT,
     subject: "Registro Semanal de Riego",
-    html: sheet,
+    html: sheet, 
   });
 }

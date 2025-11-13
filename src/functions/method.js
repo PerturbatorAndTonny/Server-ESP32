@@ -8,21 +8,18 @@ export async function avgRecord(type) {
   if (type === "Relative_Humidity") {
     recordCaptured.forEach((avg) => {
       sum += Number.parseFloat(avg.Relative_Humidity);
-      console.log(sum);
     });
   }
 
   if (type === "Relative_Celsius") {
     recordCaptured.forEach((avg) => {
       sum += Number.parseFloat(avg.Relative_Celsius);
-      console.log(sum);
     });
   }
 
   if (type === "Relative_Fahrenheit") {
     recordCaptured.forEach((avg) => {
       sum += Number.parseFloat(avg.Relative_Fahrenheit);
-      console.log(sum);
     });
   }
   const result = sum / recordCaptured.length;
@@ -34,7 +31,9 @@ export function hmtlReport(
   averageSoilHumidity,
   averageIrrigationTemperature
 ) {
-  return `
+  console.log("Promesas resueltas?", averageAirHumidity, averageSoilHumidity, averageIrrigationTemperature);
+
+  const mailSheet = `
     <html lang="es">
     <head>
       <meta charset="UTF-8">
@@ -122,5 +121,6 @@ export function hmtlReport(
 
     </body>
     </html>
-    `;
+    `
+  return mailSheet;
 }
