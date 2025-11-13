@@ -1,38 +1,31 @@
 import { db } from "../../drizzle.config.js";
+import { wateredTable } from '../../drizzle/db/schema.js'
 
-export async function averageHumidity(arrayData) {
-  const recordCaptured = await db.select().from(wateredTable);
+export async function avgRecord(type) {
   let sum = 0;
-  recordCaptured.forEach((avg) => {
-    console.log(Number.parseFloat(avg.Relative_Humidity));
-    sum += Number.parseFloat(avg.Relative_Humidity);
-    console.log(sum);
-  });
-  const result = sum / arrayData.length;
-  return result;
-}
+  const recordCaptured = await db.select().from(wateredTable);
 
-export async function averageCelsius(arrayData) {
-  const recordCaptured = await db.select().from(wateredTable);
-  let sum = 0;
-  recordCaptured.forEach((avg) => {
-    console.log(Number.parseFloat(avg.Relative_Celsius));
-    sum += Number.parseFloat(avg.Relative_Celsius);
-    console.log(sum);
-  });
-  const result = sum / arrayData.length;
-  return result;
-}
+  if (type === "Relative_Humidity") {
+    recordCaptured.forEach((avg) => {
+      sum += Number.parseFloat(avg.Relative_Humidity);
+      console.log(sum);
+    });
+  }
 
-export async function averageFahrenheit(arrayData) {
-  const recordCaptured = await db.select().from(wateredTable);
-  let sum = 0;
-  recordCaptured.forEach((avg) => {
-    console.log(Number.parseFloat(avg.Relative_Fahrenheit));
-    sum += Number.parseFloat(avg.Relative_Fahrenheit);
-    console.log(sum);
-  });
-  const result = sum / arrayData.length;
+  if (type === "Relative_Celsius") {
+    recordCaptured.forEach((avg) => {
+      sum += Number.parseFloat(avg.Relative_Celsius);
+      console.log(sum);
+    });
+  }
+
+  if (type === "Relative_Fahrenheit") {
+    recordCaptured.forEach((avg) => {
+      sum += Number.parseFloat(avg.Relative_Fahrenheit);
+      console.log(sum);
+    });
+  }
+  const result = sum / recordCaptured.length;
   return result;
 }
 
@@ -109,15 +102,15 @@ export function hmtlReport(
             <th>Valor</th>
           </tr>
           <tr>
-            <td>Humedad del aire</td>
+            <td>Humedad relativa</td>
             <td>${averageAirHumidity} %</td>
           </tr>
           <tr>
-            <td>Humedad de tierra</td>
+            <td>Temperatura celsius</td>
             <td>${averageSoilHumidity} %</td>
           </tr>
           <tr>
-            <td>Temperatura de riego</td>
+            <td>Temperatura celsius Fahrenheit</td>
             <td>${averageIrrigationTemperature} °C</td>
           </tr>
         </table>

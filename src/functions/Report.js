@@ -1,16 +1,9 @@
 import nodemailer from "nodemailer";
 import {
-  averageCelsius,
-  averageFahrenheit,
-  averageHumidity,
-  hmtlReport,
+  avgRecord, hmtlReport
 } from "./method.js";
 
-const A = averageCelsius();
-const B = averageFahrenheit();
-const C = averageHumidity();
 
-const sheet = hmtlReport(A, B, C);
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -24,6 +17,13 @@ const transporter = nodemailer.createTransport({
 });
 
 export async function sendReport() {
+
+  const A = avgRecord("Relative_Humidity");
+  const B = avgRecord("Relative_Celsius");
+  const C = avgRecord("Relative_Fahrenheit");
+  const sheet = hmtlReport(A, B, C);
+
+
   await transporter.sendMail({
     from: process.env.MAIL_USER,
     to: process.env.MAIL_RECEPT,
